@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/screens/alerts_map_screen.dart';
 import 'package:src/screens/alerts_screen.dart';
 import 'package:src/screens/home.dart';
 
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
   final screens = [
     Home(),
     Alerta(),
+    mapScreenAlert(),
   ];
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
