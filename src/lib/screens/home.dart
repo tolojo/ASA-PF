@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/screens/user_profile_screen.dart';
 
 import 'alerts_map_screen.dart';
 import 'alerts_screen.dart';
@@ -13,13 +14,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final screens = [
     Alerta(),
-    mapScreenAlert(),
+    const UserProfile(),
   ];
 
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
@@ -44,40 +45,38 @@ class _HomeState extends State<Home> {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
-        appBar:AppBar(
-            title:const Text("ASA")),
+        appBar: AppBar(title: const Text("ASA")),
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.red,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.warning),
-              label: 'Alertas',
-              backgroundColor: Colors.green,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.manage_search),
-              label: 'Search',
-              backgroundColor: Colors.pink,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.supervised_user_circle),
-              label: 'Profile',
-              backgroundColor: Colors.purple,
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.amber[800],
-          onTap: (index){_selectedIndex = index;
-            setState(() {
-            });
-          }
-          ),
+            type: BottomNavigationBarType.fixed,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.red,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.warning),
+                label: 'Alertas',
+                backgroundColor: Colors.green,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.manage_search),
+                label: 'Search',
+                backgroundColor: Colors.pink,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.supervised_user_circle),
+                label: 'Profile',
+                backgroundColor: Colors.purple,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.amber[800],
+            onTap: (index) {
+              _selectedIndex = index;
+              setState(() {});
+            }),
       ),
     );
   }

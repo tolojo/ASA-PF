@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 
-class mapScreenAlert extends StatefulWidget {
-  mapScreenAlert({Key? key}) : super(key: key);
+class MapScreenAlert extends StatefulWidget {
+  String id;
+  MapScreenAlert({required this.id});
 
   @override
-  State<mapScreenAlert> createState() => _mapScreenAlertState();
+  State<MapScreenAlert> createState() => _MapScreenAlertState();
 }
 
-class _mapScreenAlertState extends State<mapScreenAlert> {
+class _MapScreenAlertState extends State<MapScreenAlert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
