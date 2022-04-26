@@ -15,7 +15,7 @@ class MapScreenAlert extends StatefulWidget {
 class _MapScreenAlertState extends State<MapScreenAlert> {
   String alertaId;
   _MapScreenAlertState(this.alertaId);
-  final url = "http://10.0.2.2:3000/alerta/";
+  final url = "https://asa-pf.herokuapp.com/alerta/";
   var _alertaJson;
 
   void fetchAlert() async {

@@ -11,7 +11,7 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   final userId = "1";
-  final url = "http://10.0.2.2:3000/cidadao/";
+  final url = "https://asa-pf.herokuapp.com/cidadao/";
   var _cidadaoJson;
 
   Future<void> fetchCidadao() async {
