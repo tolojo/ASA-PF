@@ -5,26 +5,27 @@ import 'package:latlong2/latlong.dart' as lat_lng;
 import 'package:http/http.dart' as http;
 
 class MapScreenAlert extends StatefulWidget {
-  const MapScreenAlert({Key? key}) : super(key: key);
+  String alertaId;
+  MapScreenAlert({required this.alertaId});
 
   @override
-  State<MapScreenAlert> createState() => _MapScreenAlertState();
+  State<MapScreenAlert> createState() => _MapScreenAlertState(alertaId);
 }
 
 class _MapScreenAlertState extends State<MapScreenAlert> {
-  final alertaId = '1';
+  String alertaId;
+  _MapScreenAlertState(this.alertaId);
   final url = "http://10.0.2.2:3000/alerta/";
-  List _alertaJson = [];
+  var _alertaJson;
 
   void fetchAlert() async {
     try {
       final response = await http.get(Uri.parse(url + alertaId));
-      final mapPoints = json.decode(response.body);
+      final jsonData = jsonDecode(response.body);
       setState(() {
-        _alertaJson = mapPoints;
+        _alertaJson = jsonData;
       });
-      _alertaJson = mapPoints;
-      print(_alertaJson);
+      final post = _alertaJson;
     } catch (err) {
       print(err);
     }
@@ -38,11 +39,13 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
 
   @override
   Widget build(BuildContext context) {
-    final alerta = ModalRoute.of(context)!.settings.arguments;
+    final post = _alertaJson;
     return Scaffold(
       body: FlutterMap(
         options: MapOptions(
-          center: lat_lng.LatLng(38.7223, -9.1393),
+          center: lat_lng.LatLng(
+              double.parse("${post["alerta_localizacao_lat"]}"),
+              double.parse("${post["alerta_localizacao_lng"]}")),
           zoom: 10.0,
         ),
         layers: [
@@ -56,22 +59,21 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
               }),
           MarkerLayerOptions(
             markers: [
-              for (var point in _alertaJson) ...[
-                Marker(
-                  width: 80.0,
-                  height: 80.0,
-                  point: lat_lng.LatLng(
-                      double.parse(point["Lat"]), double.parse(point["Lng"])),
-                  builder: (ctx) => Container(
-                    child: IconButton(
-                      icon: Icon(Icons.location_on),
-                      color: Colors.blue,
-                      iconSize: 45.0,
-                      onPressed: () {},
-                    ),
+              Marker(
+                width: 80.0,
+                height: 80.0,
+                point: lat_lng.LatLng(
+                    double.parse("${post["alerta_localizacao_lat"]}"),
+                    double.parse("${post["alerta_localizacao_lng"]}")),
+                builder: (ctx) => Container(
+                  child: IconButton(
+                    icon: Icon(Icons.location_on),
+                    color: Colors.blue,
+                    iconSize: 45.0,
+                    onPressed: () {},
                   ),
                 ),
-              ],
+              ),
             ],
           ),
         ],

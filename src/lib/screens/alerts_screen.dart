@@ -45,10 +45,8 @@ class _AlertaState extends State<Alerta> {
                     child: ListTile(
                         onTap: (() {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MapScreenAlert(),
-                            settings: RouteSettings(
-                              arguments: "$post",
-                            ),
+                            builder: (context) => MapScreenAlert(
+                                alertaId: "${post["alerta_id"]}"),
                           ));
                         }),
                         title: Text(
