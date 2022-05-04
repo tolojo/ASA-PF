@@ -41,12 +41,16 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
   Widget build(BuildContext context) {
     final post = _alertaJson;
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(), 
+          title: Text("${post["alerta_nome"]}"),
+          centerTitle: true,),
       body: FlutterMap(
         options: MapOptions(
           center: lat_lng.LatLng(
               double.parse("${post["alerta_localizacao_lat"]}"),
               double.parse("${post["alerta_localizacao_lng"]}")),
-          zoom: 10.0,
+          zoom: 16.0,
         ),
         layers: [
           TileLayerOptions(
