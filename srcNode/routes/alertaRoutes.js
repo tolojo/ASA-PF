@@ -14,4 +14,16 @@ router.get('/:id', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
+router.get('/tipo', async function(req, res, next) {
+    let result = await mAlert.getTipoAlerta();
+    res.status(result.status).send(result.result);
+});
+
+router.get('/saveAlerta', async function(req, res, next) {
+    let newAlerta = req.body;
+    let result = await mAlert.saveAlerta(newAlerta);
+    res.status(result.status).send(result.result);
+});
+
+
 module.exports = router;

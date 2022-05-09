@@ -35,3 +35,39 @@ module.exports.getAlertaById = async function (id) {
         };
     }
 }
+
+
+module.exports.saveAlerta = async function (alerta) {
+    try {
+        let sql = "insert into alerta(alerta_nome, alerta_descricao, alerta_localizacao_lat, alerta_localizacao_lng, alerta_pessoa_id, alerta_ta_id) values ($1,$2,$3,$4,$5,$6)";
+        let result = await pool.query(sql, [alerta.alerta_nome,alerta.alerta_descricao,alerta.alerta_localizacao_lat,alerta.alerta_localizacao_lng,alerta.alerta_pessoa_id,alerta.alerta_ta_id]);
+        return {
+            status: 200,
+            result: result
+        }
+    } catch (err) {
+        console.log(err);
+        return {
+            status: 500,
+            result: err
+        };
+    }
+}
+
+module.exports.getTipoAlerta = async function () {
+    try {
+        let sql = "Select * from tipo_alerta";
+        let result = await pool.query(sql,[]);
+        let alerta = result.rows;
+        return {
+            status: 200,
+            result: alerta
+        };
+    } catch (err) {
+        console.log(err);
+        return {
+            status: 500,
+            result: err
+        };
+    }
+}

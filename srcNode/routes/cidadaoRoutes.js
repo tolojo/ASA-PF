@@ -9,4 +9,12 @@ router.get('/:id', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
+router.post('/login',async function(req, res, next) {
+    let nome = req.body.nome;
+    let password = req.body.password;
+    let result = await mCid.login(nome,password);
+    res.status(result.status).send(result.result);
+});
+
+
 module.exports = router;
