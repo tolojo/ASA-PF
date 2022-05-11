@@ -34,9 +34,10 @@ class _AlertaState extends State<Alerta> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData.dark(),
-        home: Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+          title: Text("ASA Alerts"),
+          centerTitle: true,),
           body: ListView.builder(
               itemCount: _alertsJson.length,
               itemBuilder: (context, i) {
@@ -53,6 +54,6 @@ class _AlertaState extends State<Alerta> {
                             "Nome: ${post["alerta_nome"]}\nDescricao: ${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
                             textAlign: TextAlign.center)));
               }),
-        ));
+        );
   }
 }

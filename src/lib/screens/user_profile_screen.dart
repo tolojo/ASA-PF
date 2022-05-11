@@ -34,14 +34,15 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     final post = _cidadaoJson;
-    return MaterialApp(
-        theme: ThemeData.dark(),
-        home: Scaffold(
-          body: Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("ASA Profile"),
+        centerTitle: true,),
+        body: Text(
             "Nome: ${post["cidadao_nome"]}\nEmail: ${post["cidadao_email"]}\n\n",
             textAlign: TextAlign.justify,
             textScaleFactor: 2,
           ),
-        ));
+        );
   }
 }

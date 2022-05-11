@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:src/screens/search_screen.dart';
 import 'package:src/screens/user_profile_screen.dart';
-
+import 'package:flutter/services.dart';
 import 'alerts_map_screen.dart';
 import 'alerts_screen.dart';
+import 'home_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,7 +15,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final screens = [
+    HomeScreen(),
     Alerta(),
+    SearchScreen(),
     const UserProfile(),
   ];
 
@@ -45,7 +49,6 @@ class _HomeState extends State<Home> {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
-        appBar: AppBar(title: const Text("ASA")),
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
