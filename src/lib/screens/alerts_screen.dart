@@ -38,7 +38,8 @@ class _AlertaState extends State<Alerta> {
       appBar: AppBar(
           title: Text("ASA Alerts"),
           centerTitle: true,),
-          body: ListView.builder(
+          body:
+          ListView.builder(
               itemCount: _alertsJson.length,
               itemBuilder: (context, i) {
                 final post = _alertsJson[i];
@@ -54,6 +55,11 @@ class _AlertaState extends State<Alerta> {
                             "Nome: ${post["alerta_nome"]}\nDescricao: ${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
                             textAlign: TextAlign.center)));
               }),
+              floatingActionButton: FloatingActionButton(onPressed: () {},
+              backgroundColor: const Color(0xBB77BECE),
+              child: const Icon(Icons.add),
+              foregroundColor: const Color(0xFFFFFFFF),
+              ), 
         );
   }
 }
