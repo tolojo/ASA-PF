@@ -13,5 +13,29 @@ router.get('/:id', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
+router.post('/savePsaName', async function(req,res,next) {
+    let psa = req.body;
+    let result = await mPSA.regNomePSA(psa);
+    res.status(result.status).send(result.result);
+
+    
+})
+
+router.get('/getCarac', async function(req, res, next) {
+    let result = await mPSA.getPSACarac();
+    res.status(result.status).send(result.result);
+});
+
+router.post('/savePsa', async function(req,res,next) {
+    let psa = req.body;
+    let result = await mPSA.regNomePSA(psa);
+    res.status(result.status).send(result.result);
+
+    
+})
+
+
+
+
 
 module.exports = router;
