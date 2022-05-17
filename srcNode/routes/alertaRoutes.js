@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
-router.get('/:id', async function(req, res, next) {
+router.get('/id/:id', async function(req, res, next) {
     id = req.params.id;
     let result = await mAlert.getAlertaById(id);
     res.status(result.status).send(result.result);

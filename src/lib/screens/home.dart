@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:src/screens/search_screen.dart';
 import 'package:src/screens/user_profile_screen.dart';
-import 'package:flutter/services.dart';
-import 'alerts_map_screen.dart';
 import 'alerts_screen.dart';
 import 'home_screen.dart';
 
@@ -47,7 +45,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
       home: Scaffold(
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -75,7 +72,7 @@ class _HomeState extends State<Home> {
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.amber[800],
+            selectedItemColor: Colors.blue,
             onTap: (index) {
               _selectedIndex = index;
               setState(() {});

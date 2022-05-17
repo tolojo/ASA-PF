@@ -7,7 +7,7 @@ router.get('/', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
-router.get('/:id', async function(req, res, next) {
+router.get('/id/:id', async function(req, res, next) {
     id = req.params.id;
     let result = await mPSA.getPSA(id);
     res.status(result.status).send(result.result);
@@ -19,7 +19,7 @@ router.post('/savePsaName', async function(req,res,next) {
     res.status(result.status).send(result.result);
 
     
-})
+});
 
 router.get('/getCarac', async function(req, res, next) {
     let result = await mPSA.getPSACarac();
@@ -32,7 +32,7 @@ router.post('/savePsa', async function(req,res,next) {
     res.status(result.status).send(result.result);
 
     
-})
+});
 
 
 

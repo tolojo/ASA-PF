@@ -11,7 +11,7 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   final userId = "1";
-  final url = "https://asa-pf.herokuapp.com/cidadao/";
+  final url = "http://10.0.2.2:3000/cidadao/";
   var _cidadaoJson;
 
   Future<void> fetchCidadao() async {
@@ -37,12 +37,13 @@ class _UserProfileState extends State<UserProfile> {
     return Scaffold(
       appBar: AppBar(
         title: Text("ASA Profile"),
-        centerTitle: true,),
-        body: Text(
-            "Nome: ${post["cidadao_nome"]}\nEmail: ${post["cidadao_email"]}\n\n",
-            textAlign: TextAlign.justify,
-            textScaleFactor: 2,
-          ),
-        );
+        centerTitle: true,
+      ),
+      body: Text(
+        "Nome: ${post["cidadao_nome"]}\nEmail: ${post["cidadao_email"]}\n\n",
+        textAlign: TextAlign.justify,
+        textScaleFactor: 2,
+      ),
+    );
   }
 }

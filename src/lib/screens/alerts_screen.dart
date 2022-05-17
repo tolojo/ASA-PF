@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:src/screens/alerts_map_screen.dart';
+import 'package:src/screens/create_PSA_screen.dart';
 import 'package:src/screens/home.dart';
 
 class Alerta extends StatefulWidget {
@@ -12,7 +13,7 @@ class Alerta extends StatefulWidget {
 }
 
 class _AlertaState extends State<Alerta> {
-  final url = "https://asa-pf.herokuapp.com/alerta";
+  final url = "http://10.0.2.2:3000/alerta";
   var _alertsJson = [];
 
   void fetchAlertas() async {
@@ -23,7 +24,9 @@ class _AlertaState extends State<Alerta> {
       setState(() {
         _alertsJson = jsonData;
       });
-    } catch (err) {}
+    } catch (err) {
+      print(err);
+    }
   }
 
   @override
@@ -36,30 +39,34 @@ class _AlertaState extends State<Alerta> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("ASA Alerts"),
-          centerTitle: true,),
-          body:
-          ListView.builder(
-              itemCount: _alertsJson.length,
-              itemBuilder: (context, i) {
-                final post = _alertsJson[i];
-                return Card(
-                    child: ListTile(
-                        onTap: (() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MapScreenAlert(
-                                alertaId: "${post["alerta_id"]}"),
-                          ));
-                        }),
-                        title: Text(
-                            "Nome: ${post["alerta_nome"]}\nDescricao: ${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
-                            textAlign: TextAlign.center)));
-              }),
-              floatingActionButton: FloatingActionButton(onPressed: () {},
-              backgroundColor: const Color(0xBB77BECE),
-              child: const Icon(Icons.add),
-              foregroundColor: const Color(0xFFFFFFFF),
-              ), 
-        );
+        title: Text("ASA Alerts"),
+        centerTitle: true,
+      ),
+      body: ListView.builder(
+          itemCount: _alertsJson.length,
+          itemBuilder: (context, i) {
+            final post = _alertsJson[i];
+            return Card(
+                child: ListTile(
+                    onTap: (() {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            MapScreenAlert(alertaId: "${post["alerta_id"]}"),
+                      ));
+                    }),
+                    title: Text(
+                        "Nome: ${post["alerta_nome"]}\nDescricao: ${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
+                        textAlign: TextAlign.center)));
+          }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => CreatePSA()));
+        },
+        backgroundColor: Color.fromARGB(186, 0, 204, 250),
+        child: const Icon(Icons.add),
+        foregroundColor: const Color(0xFFFFFFFF),
+      ),
+    );
   }
 }

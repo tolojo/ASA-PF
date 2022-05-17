@@ -15,7 +15,7 @@ class MapScreenAlert extends StatefulWidget {
 class _MapScreenAlertState extends State<MapScreenAlert> {
   String alertaId;
   _MapScreenAlertState(this.alertaId);
-  final url = "https://asa-pf.herokuapp.com/alerta/";
+  final url = "http://10.0.2.2:3000/alerta/id/";
   var _alertaJson;
 
   void fetchAlert() async {
@@ -42,9 +42,10 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
     final post = _alertaJson;
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(), 
-          title: Text("${post["alerta_nome"]}"),
-          centerTitle: true,),
+        leading: BackButton(),
+        title: Text("${post["alerta_nome"]}"),
+        centerTitle: true,
+      ),
       body: FlutterMap(
         options: MapOptions(
           center: lat_lng.LatLng(
