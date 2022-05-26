@@ -22,7 +22,7 @@ module.exports.getPSAs = async function () {
 module.exports.getPSA = async function (id) {
     try {
         let sql = "select tc_nome,caracteristicas_caracteristica,psa_nome_provisorio from caracteristicas_psa inner join psa p on p.psa_id = caracteristicas_psa.caracteristicas_psa_psa_id inner join caracteristicas c on c.caracteristicas_id = caracteristicas_psa.caracteristicas_psa_caracteristicas_id inner join tipo_caracteristicas tc on tc.tc_id = c.caracteristicas_tc_id where caracteristicas_psa_psa_id=$1";
-        let result = await pool.query(sql,[id]);
+        let result = await pool.query(sql, [id]);
         let PSA = result.rows;
         return {
             status: 200,
@@ -42,7 +42,7 @@ module.exports.getPSA = async function (id) {
 module.exports.regNomePSA = async function (nome) {
     try {
         let sql = "$insert into psa(psa_nome_provisorio) values ($1)";
-        let result = await pool.query(sql,[nome]);
+        let result = await pool.query(sql, [nome]);
         let PSA = result.rows;
         return {
             status: 200,
@@ -80,13 +80,16 @@ module.exports.getPSACarac = async function () {
 
 module.exports.regPSA = async function (PSA) {
     try {
-        
-        let sql = "insert into caracteristicas_psa(caracteristicas_psa_caracteristicas_id, caracteristicas_psa_psa_id) VALUES ($1,$2)";
-        let result = await pool.query(sql,[PSA.caracteristicas_psa_caracteristicas_id,PSA.caracteristicas_psa_psa_id]);
-        let PSA = result.rows;
+        let caracs;
+        for (i = 0; i < PSA.rows; i++) {
+            let carac = PSA[i];
+            let sql = "insert into caracteristicas_psa(caracteristicas_psa_caracteristicas_id, caracteristicas_psa_psa_id) VALUES ($1,$2)";
+            let result = await pool.query(sql, [carac.caracteristicas_psa_caracteristicas_id, carac.caracteristicas_psa_psa_id]);
+            caracs = result.rows;
+        }
         return {
             status: 200,
-            result: PSA
+            result: caracs
         };
     } catch (err) {
         console.log(err);

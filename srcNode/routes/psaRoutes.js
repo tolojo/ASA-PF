@@ -28,10 +28,8 @@ router.get('/getCarac', async function(req, res, next) {
 
 router.post('/savePsa', async function(req,res,next) {
     let psa = req.body;
-    let result = await mPSA.regNomePSA(psa);
-    res.status(result.status).send(result.result);
-
-    
+    let result = await mPSA.regPSA(psa);
+    res.status(result.status).send(result.result);    
 });
 
 
