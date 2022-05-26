@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/screens/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -77,6 +78,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ));
                       if (_formKey.currentState!.validate()) {}
                     },
                     style: ElevatedButton.styleFrom(
