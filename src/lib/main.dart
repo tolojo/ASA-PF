@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Página Principal', home: LoginPage());
+    return MaterialApp(
+      title: 'Página Principal', 
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF9DD6E2)),
+      home: const LoginPage()
+      );
   }
 }

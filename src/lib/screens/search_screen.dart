@@ -12,8 +12,9 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("ASA Search"),
-          centerTitle: true,),
+          title: const Text("ASA Search"),
+          centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),),
     );
   }
 }

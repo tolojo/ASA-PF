@@ -42,9 +42,10 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
     final post = _alertaJson;
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: const BackButton(),
         title: Text("${post["alerta_nome"]}"),
         centerTitle: true,
+        backgroundColor: const Color(0xFF9DD6E2),
       ),
       body: FlutterMap(
         options: MapOptions(

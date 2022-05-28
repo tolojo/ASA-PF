@@ -15,7 +15,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -31,28 +30,29 @@ class _LoginPageState extends State<LoginPage> {
                   color: Color(0xFFFFFFFF)),
             ),
             const SizedBox(
-              height: 60,
+              height: 20,
             ),
             Form(
               key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
                         fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.w700,
                         fontSize: 20,
                         color: Color(0xFFD3D3D3)),
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: 'E-mail',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: 'E-mail',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ), 
                   const SizedBox(
                     height: 20,
                   ),
@@ -61,40 +61,54 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
+                        color: Color(0xFFD3D3D3),
                         fontFamily: 'Quicksand',
-                        fontSize: 20,
-                        color: Color(0xDDD3D3D3)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,),
                     decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
                       hintText: 'Password',
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                  ),
+                  ),         
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
+                  Material(
+                    elevation: 15,
+                    shadowColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(15),
+                    child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => const Home(),
                       ));
                       if (_formKey.currentState!.validate()) {}
-                    },
+                    },                 
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                      padding: const EdgeInsets.fromLTRB(154, 15, 154, 15),
+                      primary: const Color(0xFF77BECE),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)
+                      )
                     ),
                     child: const Text(
                       'Sign in',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto',
+                        fontSize: 20,
+                        color:  Color(0xFFFFFFFF)
                       ),
                     ),
                   ),
+                  ),
                   const SizedBox(
                     height: 20,
+                    
                   ),
                 ],
               ),

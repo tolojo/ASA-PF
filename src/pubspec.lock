@@ -128,6 +128,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
+  gradient_textfield:
+    dependency: "direct main"
+    description:
+      name: gradient_textfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   http:
     dependency: "direct main"
     description:

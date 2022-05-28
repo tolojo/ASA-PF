@@ -12,8 +12,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("ASA Homepage"),
-          centerTitle: true,),
+          title: const Text("ASA Homepage"),
+          centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),),
     );
   }
 }

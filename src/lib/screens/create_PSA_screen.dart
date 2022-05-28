@@ -42,9 +42,10 @@ class _CreatePSAState extends State<CreatePSA> {
     final post = _caracJson;
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
-        title: Text("Create PSA profile"),
+        leading: const BackButton(),
+        title: const Text("Create PSA profile"),
         centerTitle: true,
+        backgroundColor: const Color(0xFF9DD6E2),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -79,7 +80,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -106,7 +107,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -133,7 +134,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -160,7 +161,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -187,7 +188,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -214,7 +215,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -241,7 +242,7 @@ class _CreatePSAState extends State<CreatePSA> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['Select Caracteristic', 'Two', 'Free', 'Four']
+              items: <String>['Select Caracteristic', 'Two', 'Three', 'Four']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,

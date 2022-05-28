@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:src/screens/alerts_map_screen.dart';
 import 'package:src/screens/create_PSA_screen.dart';
-import 'package:src/screens/home.dart';
 
 class Alerta extends StatefulWidget {
   Alerta({Key? key}) : super(key: key);
@@ -39,8 +38,9 @@ class _AlertaState extends State<Alerta> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ASA Alerts"),
+        title: const Text("ASA Alerts"),
         centerTitle: true,
+        backgroundColor: const Color(0xFF9DD6E2),
       ),
       body: ListView.builder(
           itemCount: _alertsJson.length,
@@ -63,9 +63,8 @@ class _AlertaState extends State<Alerta> {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => CreatePSA()));
         },
-        backgroundColor: Color.fromARGB(186, 0, 204, 250),
+        backgroundColor: const Color(0xFF9DD6E2),
         child: const Icon(Icons.add),
-        foregroundColor: const Color(0xFFFFFFFF),
       ),
     );
   }

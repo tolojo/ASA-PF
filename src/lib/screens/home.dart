@@ -48,27 +48,26 @@ class _HomeState extends State<Home> {
       home: Scaffold(
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: const Color(0xFF9DD6E2),
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-                backgroundColor: Colors.red,
+                icon: Icon(Icons.home, color: Color(0xFFFFFFFF), size: 30),
+                label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.warning),
-                label: 'Alertas',
-                backgroundColor: Colors.green,
+                icon: Icon(Icons.warning, color: Color(0xFFFFFFFF), size: 30), 
+                label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.manage_search),
-                label: 'Search',
-                backgroundColor: Colors.pink,
+                icon: Icon(Icons.manage_search, color: Color(0xFFFFFFFF), size: 30),
+                label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.supervised_user_circle),
-                label: 'Profile',
-                backgroundColor: Colors.purple,
+                icon: Icon(Icons.supervised_user_circle, color: Color(0xFFFFFFFF), size: 30),
+                label: '',
               ),
             ],
             currentIndex: _selectedIndex,
