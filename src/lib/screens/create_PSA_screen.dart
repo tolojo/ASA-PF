@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 class CreatePSA extends StatefulWidget {
-  CreatePSA({Key? key}) : super(key: key);
+  const CreatePSA({Key? key}) : super(key: key);
 
   @override
   State<CreatePSA> createState() => _CreatePSAState();

@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.2
   flutter_map: ^0.14.0
   gradient_textfield: ^0.0.1
+  form_field_validator: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

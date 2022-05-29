@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();

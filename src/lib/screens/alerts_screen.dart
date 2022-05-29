@@ -5,7 +5,7 @@ import 'package:src/screens/alerts_map_screen.dart';
 import 'package:src/screens/create_PSA_screen.dart';
 
 class Alerta extends StatefulWidget {
-  Alerta({Key? key}) : super(key: key);
+  const Alerta({Key? key}) : super(key: key);
 
   @override
   State<Alerta> createState() => _AlertaState();

@@ -13,9 +13,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final screens = [
-    HomeScreen(),
-    Alerta(),
-    SearchScreen(),
+    const HomeScreen(),
+    const Alerta(),
+    const SearchScreen(),
     const UserProfile(),
   ];
 

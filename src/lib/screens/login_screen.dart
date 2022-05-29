@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:src/screens/home.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,8 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-  var rememberValue = false;
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
+          children: [
             const Text(
               'Iniciar Sessão',
               style: TextStyle(
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
             Form(
-              key: _formKey,
+              key: formkey,
               child: Column(
                 children: [
                   TextFormField(
@@ -52,6 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
+                        validator: MultiValidator([
+                          RequiredValidator(errorText: "* Obrigatório"),
+                          EmailValidator(errorText: "Introduza um email válido"),
+                        ]),
                       ), 
                   const SizedBox(
                     height: 20,
@@ -73,6 +77,9 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "* Obrigatório"),
+                    ])
                   ),         
                   const SizedBox(
                     height: 20,
@@ -83,10 +90,14 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(15),
                     child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Home(),
-                      ));
-                      if (_formKey.currentState!.validate()) {}
+                      if (formkey.currentState!.validate()) {
+                        formkey.currentState!.save();
+                        Navigator.push(context, 
+                        MaterialPageRoute(builder: (_) => const Home()));
+                        print("Válido!");
+                      } else {
+                        print("Credênciais Inválidas!");
+                      }
                     },                 
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.fromLTRB(154, 15, 154, 15),
