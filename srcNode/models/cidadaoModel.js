@@ -18,10 +18,10 @@ module.exports.getCidadaoById = async function (id) {
     }
 }
 
-module.exports.login = async function (nome, password) {
+module.exports.login = async function (cidadao) {
     try {
-        let sql = "Select * from utilizador where cidadao_username = $1 and cidadao_password = $2";
-        let result = await pool.query(sql, [nome, password]);
+        let sql = "Select * from cidadao where cidadao_email = $1 and cidadao_password = $2";
+        let result = await pool.query(sql, [cidadao.email, cidadao.password]);
         if (result.rows.length > 0)
             return {
                 status: 200,
@@ -30,7 +30,7 @@ module.exports.login = async function (nome, password) {
         else return {
             status: 401,
             result: {
-                msg: "Nome ou password incorreta"
+                msg: "Email ou password incorreta"
             }
         };
     } catch (err) {

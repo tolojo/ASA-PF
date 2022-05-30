@@ -10,9 +10,8 @@ router.get('/:id', async function(req, res, next) {
 });
 
 router.post('/login',async function(req, res, next) {
-    let nome = req.body.nome;
-    let password = req.body.password;
-    let result = await mCid.login(nome,password);
+    let cidadao = req.body;
+    let result = await mCid.login(cidadao);
     res.status(result.status).send(result.result);
 });
 
