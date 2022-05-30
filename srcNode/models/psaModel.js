@@ -60,7 +60,7 @@ module.exports.regNomePSA = async function (nome) {
 
 module.exports.getPSACarac = async function () {
     try {
-        let sql = "select tc_nome,caracteristicas_caracteristica from caracteristicas inner join tipo_caracteristicas tc on tc.tc_id = caracteristicas.caracteristicas_tc_id";
+        let sql = "select caracteristicas_caracteristica from caracteristicas inner join tipo_caracteristicas tc on tc.tc_id = caracteristicas.caracteristicas_tc_id";
         let result = await pool.query(sql);
         let PSA = result.rows;
         return {
@@ -79,12 +79,14 @@ module.exports.getPSACarac = async function () {
 
 
 module.exports.regPSA = async function (PSA) {
+    console.log(PSA);
     try {
         let caracs;
-        for (i = 0; i < PSA.rows; i++) {
+        for (i = 0; i < PSA.length; i++) {
             let carac = PSA[i];
+            console.log(carac);
             let sql = "insert into caracteristicas_psa(caracteristicas_psa_caracteristicas_id, caracteristicas_psa_psa_id) VALUES ($1,$2)";
-            let result = await pool.query(sql, [carac.caracteristicas_psa_caracteristicas_id, carac.caracteristicas_psa_psa_id]);
+            let result = await pool.query(sql, [carac, 3]);
             caracs = result.rows;
         }
         return {
