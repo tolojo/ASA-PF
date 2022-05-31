@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:src/screens/alerts_map_screen.dart';
 import 'package:src/screens/create_PSA_screen.dart';
+import 'package:src/screens/create_PsaName_screen.dart';
 
 class Alerta extends StatefulWidget {
   const Alerta({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _AlertaState extends State<Alerta> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => CreatePSA()));
+              .push(MaterialPageRoute(builder: (context) => CreatePsaName()));
         },
         backgroundColor: const Color(0xFF9DD6E2),
         child: const Icon(Icons.add),

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:src/screens/home.dart';
 
 class CreatePSA extends StatefulWidget {
   CreatePSA({Key? key}) : super(key: key);
@@ -22,16 +23,12 @@ class _CreatePSAState extends State<CreatePSA> {
       setState(() {
         _caracJson = jsonData;
       });
-
-      print(_caracJson);
     } catch (err) {
       print(err);
     }
   }
 
   Future<Response> sendPSA(List form) {
-    print(form);
-
     return post(
       Uri.parse("http://10.0.2.2:3000/psa/savePsa"),
       headers: <String, String>{
@@ -47,11 +44,18 @@ class _CreatePSAState extends State<CreatePSA> {
     fetchCarac();
   }
 
+  int? sValue1 = 1;
+  int? sValue2 = 3;
+  int? sValue3 = 5;
+  int? sValue4 = 7;
+  int? sValue5 = 9;
+  int? sValue6 = 11;
+
+  var form = [];
   Widget build(context) {
     String name = "";
     int i = 0;
     String dropdownValue = "";
-    print(_caracJson);
 
     while (_caracJson == null) {
       return Scaffold(
@@ -84,146 +88,190 @@ class _CreatePSAState extends State<CreatePSA> {
       String val4 = "";
       String val5 = "";
       String val6 = "";
-      var form = [];
+
       return Scaffold(
           appBar: AppBar(
             leading: BackButton(),
             title: Text("Create PSA profile"),
             centerTitle: true,
+            backgroundColor: const Color(0xFF9DD6E2),
           ),
           body: Center(
             child: Column(
               children: [
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 1,
-                            child: Center(
-                                child: Text(
-                                    "${post["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 2,
-                            child: Center(
-                                child: Text(
-                                    "${post1["caracteristicas_caracteristica"]}")))
-                      ],
-                      hint: Text("caracteristica"),
-                      onChanged: (_value) => {
-                        val1 = _value.toString(),
-                        print(val1),
-                        form.add(val1),
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Cor dos olhos PSA"),
+                      DropdownButton(
+                        value: sValue1,
+                        items: [
+                          DropdownMenuItem(
+                              value: 1,
+                              child: Center(
+                                  child: Text(
+                                      "${post["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 2,
+                              child: Center(
+                                  child: Text(
+                                      "${post1["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue1 = _value!;
+                          }),
+                          print(val1),
+                          val1 = _value.toString(),
+                          form.add(val1),
+                        },
+                      )
+                    ])),
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 3,
-                            child: Center(
-                                child: Text(
-                                    "${post2["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 4,
-                            child: Center(
-                                child: Text(
-                                    "${post3["caracteristicas_caracteristica"]}")))
-                      ],
-                      onChanged: (_value) => {
-                        val2 = _value.toString(),
-                        print(val2),
-                        form.add(val2)
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Estatura do PSA"),
+                      DropdownButton(
+                        value: sValue2,
+                        items: [
+                          DropdownMenuItem(
+                              value: 3,
+                              child: Center(
+                                  child: Text(
+                                      "${post2["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 4,
+                              child: Center(
+                                  child: Text(
+                                      "${post3["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue2 = _value!;
+                          }),
+                          val2 = _value.toString(),
+                          print(val2),
+                          form.add(val2)
+                        },
+                      )
+                    ])),
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 5,
-                            child: Center(
-                                child: Text(
-                                    "${post4["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 6,
-                            child: Center(
-                                child: Text(
-                                    "${post5["caracteristicas_caracteristica"]}")))
-                      ],
-                      onChanged: (_value) => {
-                        val3 = _value.toString(),
-                        print(val3),
-                        form.add(val3),
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Cor do cabelo do PSA"),
+                      DropdownButton(
+                        value: sValue3,
+                        items: [
+                          DropdownMenuItem(
+                              value: 5,
+                              child: Center(
+                                  child: Text(
+                                      "${post4["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 6,
+                              child: Center(
+                                  child: Text(
+                                      "${post5["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue3 = _value!;
+                          }),
+                          val3 = _value.toString(),
+                          print(val3),
+                          form.add(val3),
+                        },
+                      )
+                    ])),
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 7,
-                            child: Center(
-                                child: Text(
-                                    "${post6["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 8,
-                            child: Center(
-                                child: Text(
-                                    "${post7["caracteristicas_caracteristica"]}")))
-                      ],
-                      onChanged: (_value) => {
-                        val4 = _value.toString(),
-                        print(val4),
-                        form.add(val4),
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Idade aparente PSA"),
+                      DropdownButton(
+                        value: sValue4,
+                        items: [
+                          DropdownMenuItem(
+                              value: 7,
+                              child: Center(
+                                  child: Text(
+                                      "${post6["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 8,
+                              child: Center(
+                                  child: Text(
+                                      "${post7["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue4 = _value!;
+                          }),
+                          val4 = _value.toString(),
+                          print(val4),
+                          form.add(val4),
+                        },
+                      )
+                    ])),
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 9,
-                            child: Center(
-                                child: Text(
-                                    "${post8["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 10,
-                            child: Center(
-                                child: Text(
-                                    "${post9["caracteristicas_caracteristica"]}")))
-                      ],
-                      onChanged: (_value) => {
-                        val5 = _value.toString(),
-                        print(val5),
-                        form.add(val5),
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Acessorios do PSA"),
+                      DropdownButton(
+                        value: sValue5,
+                        items: [
+                          DropdownMenuItem(
+                              value: 9,
+                              child: Center(
+                                  child: Text(
+                                      "${post8["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 10,
+                              child: Center(
+                                  child: Text(
+                                      "${post9["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue5 = _value!;
+                          }),
+                          val5 = _value.toString(),
+                          print(val5),
+                          form.add(val5),
+                        },
+                      )
+                    ])),
                 Padding(
                     padding: EdgeInsets.all(15.0),
-                    child: DropdownButton(
-                      items: [
-                        DropdownMenuItem(
-                            value: 11,
-                            child: Center(
-                                child: Text(
-                                    "${post10["caracteristicas_caracteristica"]}"))),
-                        DropdownMenuItem(
-                            value: 12,
-                            child: Center(
-                                child: Text(
-                                    "${post11["caracteristicas_caracteristica"]}")))
-                      ],
-                      onChanged: (_value) => {
-                        val6 = _value.toString(),
-                        print(val6),
-                        form.add(val6),
-                      },
-                    )),
+                    child: Column(children: [
+                      Text("Tonalidade da pele do PSA"),
+                      DropdownButton(
+                        value: sValue6,
+                        items: [
+                          DropdownMenuItem(
+                              value: 11,
+                              child: Center(
+                                  child: Text(
+                                      "${post10["caracteristicas_caracteristica"]}"))),
+                          DropdownMenuItem(
+                              value: 12,
+                              child: Center(
+                                  child: Text(
+                                      "${post11["caracteristicas_caracteristica"]}")))
+                        ],
+                        onChanged: (int? _value) => {
+                          setState(() {
+                            sValue6 = _value!;
+                          }),
+                          val6 = _value.toString(),
+                          print(val6),
+                          form.add(val6),
+                        },
+                      )
+                    ])),
                 TextButton(
                     onPressed: () {
                       sendPSA(form);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Home()));
                     },
                     child: Text("Send PSA"))
               ],

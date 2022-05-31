@@ -37,12 +37,13 @@ module.exports.getPSA = async function (id) {
     }
 }
 
-
-
-module.exports.regNomePSA = async function (nome) {
+module.exports.regNomePSA = async function (psa) {
     try {
-        let sql = "$insert into psa(psa_nome_provisorio) values ($1)";
-        let result = await pool.query(sql, [nome]);
+        console.log(psa.name);
+        var nomePSA = psa.name
+
+        let sql = "insert into psa(psa_nome_provisorio) values ($1)";
+        let result = await pool.query(sql, [nomePSA]);
         let PSA = result.rows;
         return {
             status: 200,
@@ -81,12 +82,16 @@ module.exports.getPSACarac = async function () {
 module.exports.regPSA = async function (PSA) {
     console.log(PSA);
     try {
+        let sql = "select max(psa_id) from psa";
+        let result = await pool.query(sql, []);
+        let PSAid = result.rows[0];
+        console.log(PSA);
         let caracs;
         for (i = 0; i < PSA.length; i++) {
             let carac = PSA[i];
             console.log(carac);
             let sql = "insert into caracteristicas_psa(caracteristicas_psa_caracteristicas_id, caracteristicas_psa_psa_id) VALUES ($1,$2)";
-            let result = await pool.query(sql, [carac, 3]);
+            let result = await pool.query(sql, [carac, PSAid.max]);
             caracs = result.rows;
         }
         return {

@@ -48,9 +48,9 @@ class _HomeState extends State<Home> {
       home: Scaffold(
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          backgroundColor: const Color(0xFF9DD6E2),
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            backgroundColor: const Color(0xFF9DD6E2),
             type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -58,15 +58,17 @@ class _HomeState extends State<Home> {
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.warning, color: Color(0xFFFFFFFF), size: 30), 
+                icon: Icon(Icons.warning, color: Color(0xFFFFFFFF), size: 30),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.manage_search, color: Color(0xFFFFFFFF), size: 30),
+                icon: Icon(Icons.manage_search,
+                    color: Color(0xFFFFFFFF), size: 30),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.supervised_user_circle, color: Color(0xFFFFFFFF), size: 30),
+                icon: Icon(Icons.supervised_user_circle,
+                    color: Color(0xFFFFFFFF), size: 30),
                 label: '',
               ),
             ],

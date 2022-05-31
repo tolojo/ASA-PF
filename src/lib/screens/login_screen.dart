@@ -154,14 +154,16 @@ class _LoginPageState extends State<LoginPage> {
                               });
                               signIn(emailController.text,
                                   passwordController.text);
-                              /*if (formkey.currentState!.validate()) {
-                        formkey.currentState!.save();
-                        Navigator.push(context, 
-                        MaterialPageRoute(builder: (_) => const Home()));
-                        print("Válido!");
-                      } else {
-                        print("Credênciais Inválidas!");
-                      }*/
+                              if (formkey.currentState!.validate()) {
+                                formkey.currentState!.save();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => const Home()));
+                                print("Válido!");
+                              } else {
+                                print("Credênciais Inválidas!");
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                                 padding:
