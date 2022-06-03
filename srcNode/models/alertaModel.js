@@ -61,7 +61,7 @@ module.exports.saveAlertaPsa = async function (alerta) {
         let result1 = await pool.query(sql1, []);
         let alertaId = result1.rows[0];
         console.log(alertaId.max);
-        let sql = "insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id,caracteristicas_alerta_psa_id) values ($1,$2)";
+        let sql = "insert into psa_alerta(psa_alerta_alerta_id,psa_alerta_psa_id) values ($1,$2)";
         let result = await pool.query(sql, [alertaId.max,alerta.caracteristicas_alerta_psa_id]);
         return {
             status: 200,
