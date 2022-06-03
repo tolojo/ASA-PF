@@ -111,8 +111,8 @@ module.exports.regPSA = async function (PSA) {
 module.exports.getPSAByName = async function (nome) {
     console.log(nome);
     try {
-        let sql = "select psa_id, psa_nome_provisorio from psa WHERE psa_nome_provisorio LIKE $1%";
-        let result = await pool.query(sql, [nome]);
+        let sql = "select psa_id, psa_nome_provisorio from psa WHERE psa_nome_provisorio LIKE '%"+nome+"%'";
+        let result = await pool.query(sql);
         let PSAs = result.rows;
         return {
             status: 200,
