@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final url = "http://10.0.2.2:3000/cidadao/login";
   bool _isLoading = false;
   late String email, password;
+  late var rStatus = 400;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = false;
     });
     print(response.statusCode);
+    rStatus = response.statusCode;
     if (response.statusCode == 200) {
       Map<String, dynamic> user = jsonDecode(response.body);
       print(user);
@@ -154,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                               });
                               signIn(emailController.text,
                                   passwordController.text);
-                              if (formkey.currentState!.validate()) {
+                              if (formkey.currentState!.validate() && rStatus == 200) {                               
                                 formkey.currentState!.save();
                                 Navigator.push(
                                     context,
@@ -162,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                         builder: (_) => const Home()));
                                 print("Válido!");
                               } else {
+                                _isLoading = false;
                                 print("Credênciais Inválidas!");
                               }
                             },

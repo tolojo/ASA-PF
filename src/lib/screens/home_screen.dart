@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'create_PsaName_screen.dart';
-import 'package:fluttericon/entypo_icons.dart';
-
-final myIcons = Icon(Entypo.user_add);
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
