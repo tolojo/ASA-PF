@@ -19,9 +19,14 @@ router.get('/tipo', async function(req, res, next) {
     res.status(result.status).send(result.result);
 });
 
-router.get('/saveAlerta', async function(req, res, next) {
+router.post('/saveAlerta', async function(req, res, next) {
     let newAlerta = req.body;
     let result = await mAlert.saveAlerta(newAlerta);
+    res.status(result.status).send(result.result);
+});
+router.post('/saveAlertaPsa', async function(req, res, next) {
+    let newAlerta = req.body;
+    let result = await mAlert.saveAlertaPsa(newAlerta);
     res.status(result.status).send(result.result);
 });
 

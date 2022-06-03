@@ -13,7 +13,7 @@ class CreatePSA extends StatefulWidget {
 
 class _CreatePSAState extends State<CreatePSA> {
   final url = "http://10.0.2.2:3000/psa/getCarac";
-  var _caracJson = [];
+  var _caracJson = null;
 
   void fetchCarac() async {
     try {
@@ -53,10 +53,6 @@ class _CreatePSAState extends State<CreatePSA> {
 
   var form = [];
   Widget build(context) {
-    String name = "";
-    int i = 0;
-    String dropdownValue = "";
-
     while (_caracJson == null) {
       return Scaffold(
         appBar: AppBar(

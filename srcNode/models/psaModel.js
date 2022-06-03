@@ -2,7 +2,7 @@ var pool = require("./connection");
 
 module.exports.getPSAs = async function () {
     try {
-        let sql = "select tc_nome,caracteristicas_caracteristica,psa_nome_provisorio from caracteristicas_psa inner join psa p on p.psa_id = caracteristicas_psa.caracteristicas_psa_psa_id inner join caracteristicas c on c.caracteristicas_id = caracteristicas_psa.caracteristicas_psa_caracteristicas_id inner join tipo_caracteristicas tc on tc.tc_id = c.caracteristicas_tc_id";
+        let sql = "select psa_nome_provisorio, psa_id from psa";
         let result = await pool.query(sql);
         let PSAs = result.rows;
         return {

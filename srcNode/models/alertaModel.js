@@ -54,6 +54,28 @@ module.exports.saveAlerta = async function (alerta) {
     }
 }
 
+
+module.exports.saveAlertaPsa = async function (alerta) {
+    try {
+        let sql1 = "select max(alerta_id) from alerta";
+        let result1 = await pool.query(sql1, []);
+        let alertaId = result1.rows[0];
+        console.log(alertaId.max);
+        let sql = "insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id,caracteristicas_alerta_psa_id) values ($1,$2)";
+        let result = await pool.query(sql, [alertaId.max,alerta.caracteristicas_alerta_psa_id]);
+        return {
+            status: 200,
+            result: result
+        }
+    } catch (err) {
+        console.log(err);
+        return {
+            status: 500,
+            result: err
+        };
+    }
+}
+
 module.exports.getTipoAlerta = async function () {
     try {
         let sql = "Select * from tipo_alerta";
