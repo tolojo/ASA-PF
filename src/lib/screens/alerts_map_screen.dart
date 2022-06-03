@@ -47,40 +47,47 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
         centerTitle: true,
         backgroundColor: const Color(0xFF9DD6E2),
       ),
-      body: FlutterMap(
-        options: MapOptions(
-          center: lat_lng.LatLng(
-              double.parse("${post["alerta_localizacao_lat"]}"),
-              double.parse("${post["alerta_localizacao_lng"]}")),
-          zoom: 16.0,
-        ),
-        layers: [
-          TileLayerOptions(
-              urlTemplate:
-                  "https://api.mapbox.com/styles/v1/jptr0508/cl26p5a73004o15pfylndcghw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ",
-              additionalOptions: {
-                'accessToken':
-                    'pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ',
-                'id': 'mapbox.mapbox-streets-v8'
-              }),
-          MarkerLayerOptions(
-            markers: [
-              Marker(
-                width: 80.0,
-                height: 80.0,
-                point: lat_lng.LatLng(
+      body: Column(
+        children: [
+          SizedBox(
+            height: 300,
+            child: FlutterMap(
+              options: MapOptions(
+                center: lat_lng.LatLng(
                     double.parse("${post["alerta_localizacao_lat"]}"),
                     double.parse("${post["alerta_localizacao_lng"]}")),
-                builder: (ctx) => Container(
-                  child: IconButton(
-                    icon: Icon(Icons.location_on),
-                    color: Colors.blue,
-                    iconSize: 45.0,
-                    onPressed: () {},
-                  ),
-                ),
+                zoom: 16.0,
               ),
-            ],
+              layers: [
+                TileLayerOptions(
+                    urlTemplate:
+                        "https://api.mapbox.com/styles/v1/jptr0508/cl26p5a73004o15pfylndcghw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ",
+                    additionalOptions: {
+                      'accessToken':
+                          'pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ',
+                      'id': 'mapbox.mapbox-streets-v8'
+                    }),
+                MarkerLayerOptions(
+                  markers: [
+                    Marker(
+                      width: 80.0,
+                      height: 80.0,
+                      point: lat_lng.LatLng(
+                          double.parse("${post["alerta_localizacao_lat"]}"),
+                          double.parse("${post["alerta_localizacao_lng"]}")),
+                      builder: (ctx) => Container(
+                        child: IconButton(
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blue,
+                          iconSize: 45.0,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
