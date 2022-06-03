@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -8,6 +11,23 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  final url = "http://10.0.2.2:3000/psa/";
+  var _psaJson;
+
+  Future<void> fetchCidadao() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getString('id');
+    print(userId);
+    try {
+      final response = await http.get(Uri.parse(url + userId!));
+      final jsonData = jsonDecode(response.body);
+      setState(() {
+        _psaJson = jsonData;
+      });
+      _psaJson = jsonData;
+    } catch (err) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
               child: TextField(
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.manage_search,
+                  prefixIcon: const Icon(Icons.search,
                       color: Color(0xFF9DD6E2), size: 30),
                   contentPadding: const EdgeInsets.symmetric(vertical: 30.0),
                   fillColor: const Color.fromARGB(255, 223, 223, 223),
@@ -48,27 +68,23 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             const SizedBox(
-              height: 200,
+              height: 10,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                 const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Pesquise por um sem-abrigo",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF656565),
-                    ),
-                  ),
-                ),
-              ],
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.fromLTRB(150, 20, 150, 20),
+                  primary: const Color(0xFF77BECE),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+              child: const Text(
+                'Pesquisar',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    color: Color(0xFFFFFFFF)),
+              ),
             ),
           ],
         ),

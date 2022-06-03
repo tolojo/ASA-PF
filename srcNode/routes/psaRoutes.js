@@ -32,7 +32,11 @@ router.post('/savePsa', async function(req,res,next) {
     res.status(result.status).send(result.result);    
 });
 
-
+router.get('/nome/:nome', async function(req, res, next) {
+    let nome = req.params.nome;
+    let result = await mPSA.getPSAByName(nome);
+    res.status(result.status).send(result.result);
+});
 
 
 

@@ -56,11 +56,11 @@ class _CreatePSAState extends State<CreatePSA> {
     while (_caracJson == null) {
       return Scaffold(
         appBar: AppBar(
-          leading: BackButton(),
-          title: Text("Create PSA profile"),
+          leading: const BackButton(),
+          title: const Text("Create PSA profile"),
           centerTitle: true,
         ),
-        body: Center(child: Text("loading")),
+        body: const Center(child: Text("loading")),
       );
     }
 
@@ -86,202 +86,301 @@ class _CreatePSAState extends State<CreatePSA> {
       String val6 = "";
 
       return Scaffold(
-          appBar: AppBar(
-            leading: BackButton(),
-            title: Text("Create PSA profile"),
-            centerTitle: true,
-            backgroundColor: const Color(0xFF9DD6E2),
+        appBar: AppBar(
+          leading: const BackButton(),
+          title: const Text("Create PSA Profile"),
+          centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Cor dos Olhos",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue1,
+                      items: [
+                        DropdownMenuItem(
+                            value: 1,
+                            child: Center(
+                                child: Text(
+                                    "${post["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 2,
+                            child: Center(
+                                child: Text(
+                                    "${post1["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue1 = _value!;
+                        }),
+                        print(val1),
+                        val1 = _value.toString(),
+                        form.add(val1),
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Estatura",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue2,
+                      items: [
+                        DropdownMenuItem(
+                            value: 3,
+                            child: Center(
+                                child: Text(
+                                    "${post2["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 4,
+                            child: Center(
+                                child: Text(
+                                    "${post3["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue2 = _value!;
+                        }),
+                        val2 = _value.toString(),
+                        print(val2),
+                        form.add(val2)
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Cor do Cabelo",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue3,
+                      items: [
+                        DropdownMenuItem(
+                            value: 5,
+                            child: Center(
+                                child: Text(
+                                    "${post4["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 6,
+                            child: Center(
+                                child: Text(
+                                    "${post5["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue3 = _value!;
+                        }),
+                        val3 = _value.toString(),
+                        print(val3),
+                        form.add(val3),
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Idade Aparente",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue4,
+                      items: [
+                        DropdownMenuItem(
+                            value: 7,
+                            child: Center(
+                                child: Text(
+                                    "${post6["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 8,
+                            child: Center(
+                                child: Text(
+                                    "${post7["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue4 = _value!;
+                        }),
+                        val4 = _value.toString(),
+                        print(val4),
+                        form.add(val4),
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Acessorios",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue5,
+                      items: [
+                        DropdownMenuItem(
+                            value: 9,
+                            child: Center(
+                                child: Text(
+                                    "${post8["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 10,
+                            child: Center(
+                                child: Text(
+                                    "${post9["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue5 = _value!;
+                        }),
+                        val5 = _value.toString(),
+                        print(val5),
+                        form.add(val5),
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Tonalidade da Pele",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF537597),
+                        ),
+                      ),
+                    ),
+                    DropdownButton(
+                      value: sValue6,
+                      items: [
+                        DropdownMenuItem(
+                            value: 11,
+                            child: Center(
+                                child: Text(
+                                    "${post10["caracteristicas_caracteristica"]}"))),
+                        DropdownMenuItem(
+                            value: 12,
+                            child: Center(
+                                child: Text(
+                                    "${post11["caracteristicas_caracteristica"]}")))
+                      ],
+                      onChanged: (int? _value) => {
+                        setState(() {
+                          sValue6 = _value!;
+                        }),
+                        val6 = _value.toString(),
+                        print(val6),
+                        form.add(val6),
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.fromLTRB(52, 20, 52, 20),
+                    primary: const Color(0xFF77BECE),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12))),
+                onPressed: () {
+                  sendPSA(form);
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => const Home()));
+                },
+                child: const Text(
+                  "Submeter",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    color: Color(0xFFFFFFFF),
+                  ),
+                ),
+              )
+            ],
           ),
-          body: Center(
-            child: Column(
-              children: [
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Cor dos olhos PSA"),
-                      DropdownButton(
-                        value: sValue1,
-                        items: [
-                          DropdownMenuItem(
-                              value: 1,
-                              child: Center(
-                                  child: Text(
-                                      "${post["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 2,
-                              child: Center(
-                                  child: Text(
-                                      "${post1["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue1 = _value!;
-                          }),
-                          print(val1),
-                          val1 = _value.toString(),
-                          form.add(val1),
-                        },
-                      )
-                    ])),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Estatura do PSA"),
-                      DropdownButton(
-                        value: sValue2,
-                        items: [
-                          DropdownMenuItem(
-                              value: 3,
-                              child: Center(
-                                  child: Text(
-                                      "${post2["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 4,
-                              child: Center(
-                                  child: Text(
-                                      "${post3["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue2 = _value!;
-                          }),
-                          val2 = _value.toString(),
-                          print(val2),
-                          form.add(val2)
-                        },
-                      )
-                    ])),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Cor do cabelo do PSA"),
-                      DropdownButton(
-                        value: sValue3,
-                        items: [
-                          DropdownMenuItem(
-                              value: 5,
-                              child: Center(
-                                  child: Text(
-                                      "${post4["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 6,
-                              child: Center(
-                                  child: Text(
-                                      "${post5["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue3 = _value!;
-                          }),
-                          val3 = _value.toString(),
-                          print(val3),
-                          form.add(val3),
-                        },
-                      )
-                    ])),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Idade aparente PSA"),
-                      DropdownButton(
-                        value: sValue4,
-                        items: [
-                          DropdownMenuItem(
-                              value: 7,
-                              child: Center(
-                                  child: Text(
-                                      "${post6["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 8,
-                              child: Center(
-                                  child: Text(
-                                      "${post7["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue4 = _value!;
-                          }),
-                          val4 = _value.toString(),
-                          print(val4),
-                          form.add(val4),
-                        },
-                      )
-                    ])),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Acessorios do PSA"),
-                      DropdownButton(
-                        value: sValue5,
-                        items: [
-                          DropdownMenuItem(
-                              value: 9,
-                              child: Center(
-                                  child: Text(
-                                      "${post8["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 10,
-                              child: Center(
-                                  child: Text(
-                                      "${post9["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue5 = _value!;
-                          }),
-                          val5 = _value.toString(),
-                          print(val5),
-                          form.add(val5),
-                        },
-                      )
-                    ])),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Column(children: [
-                      Text("Tonalidade da pele do PSA"),
-                      DropdownButton(
-                        value: sValue6,
-                        items: [
-                          DropdownMenuItem(
-                              value: 11,
-                              child: Center(
-                                  child: Text(
-                                      "${post10["caracteristicas_caracteristica"]}"))),
-                          DropdownMenuItem(
-                              value: 12,
-                              child: Center(
-                                  child: Text(
-                                      "${post11["caracteristicas_caracteristica"]}")))
-                        ],
-                        onChanged: (int? _value) => {
-                          setState(() {
-                            sValue6 = _value!;
-                          }),
-                          val6 = _value.toString(),
-                          print(val6),
-                          form.add(val6),
-                        },
-                      )
-                    ])),
-                TextButton(
-                    onPressed: () {
-                      sendPSA(form);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const Home()));
-                    },
-                    child: Text("Send PSA"))
-              ],
-            ),
-          ));
+        ),
+      );
     }
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
-        title: Text("Create PSA profile"),
+        leading: const BackButton(),
+        title: const Text("Create PSA profile"),
         centerTitle: true,
       ),
-      body: Center(child: Text("loading")),
+      body: const Center(child: Text("loading")),
     );
   }
 }
