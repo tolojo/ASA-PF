@@ -76,10 +76,10 @@ create table local_psa(local_psa_id serial not null,
 				 local_psa_voluntario_id int not null,
 				 primary key (local_psa_id));
 				 
-create table caracteristicas_alerta(caracteristicas_alerta_id serial not null,
-							  caracteristicas_alerta_alerta_id int not null,
-							  caracteristicas_alerta_caracteristicas_id int not null,
-							  primary key (caracteristicas_alerta_id));
+create table psa_alerta(psa_alerta_id serial not null,
+							  psa_alerta_alerta_id int not null,
+							  psa_alerta_psa_id int not null,
+							  primary key (psa_alerta_id));
 							  
 create table psa_cidadao(psa_cidadao_id serial not null,
 				   psa_cidadao_psa int not null,
@@ -136,12 +136,12 @@ alter table local_psa add constraint local_psa_fk_voluntario
             foreign key (local_psa_voluntario_id) references voluntario(voluntario_id) 
 			ON DELETE NO ACTION ON UPDATE NO ACTION;
 																		
-alter table caracteristicas_alerta add constraint caracteristicas_alerta_fk_alerta
-            foreign key (caracteristicas_alerta_alerta_id) references alerta(alerta_id) 
+alter table psa_alerta add constraint psa_alerta_fk_alerta
+            foreign key (psa_alerta_alerta_id) references alerta(alerta_id) 
 			ON DELETE NO ACTION ON UPDATE NO ACTION;
 																					
-alter table caracteristicas_alerta add constraint caracteristicas_alerta_fk_caracteristicas
-            foreign key (caracteristicas_alerta_caracteristicas_id) references caracteristicas(caracteristicas_id) 
+alter table psa_alerta add constraint psa_alerta_fk_psa
+            foreign key (psa_alerta_psa_id) references psa(psa_id) 
 			ON DELETE NO ACTION ON UPDATE NO ACTION;
 																					
 alter table psa_cidadao add constraint psa_cidadao_fk_psa

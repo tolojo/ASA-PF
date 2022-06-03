@@ -60,9 +60,5 @@ insert into tipo_alerta(ta_descricao, ta_urgencia) VALUES ('Urgencia Médica',4)
 insert into alerta(alerta_nome, alerta_descricao, alerta_localizacao_lat,alerta_localizacao_lng, alerta_pessoa_id, alerta_ta_id) VALUES ('Falta de comida','Sem abrigo na zona de Campo de Ourique encontra-se neste momento sem comida',38.7173115, -9.1680233,1,1);
 insert into alerta(alerta_nome, alerta_descricao, alerta_localizacao_lat,alerta_localizacao_lng, alerta_pessoa_id, alerta_ta_id) VALUES ('Falta de roupa','Sem abrigo na estrela esta com falat de roupa para o inverno',38.7091073,-9.1667920,1,1);
 
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,1);
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,3);
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,5);
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,7);
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,9);
-insert into caracteristicas_alerta(caracteristicas_alerta_alerta_id, caracteristicas_alerta_caracteristicas_id) VALUES (1,11);
+insert into psa_alerta(psa_alerta_alerta_id, psa_alerta_psa_id) VALUES (1,1);
+insert into psa_alerta(psa_alerta_alerta_id, psa_alerta_psa_id) VALUES (2,2);
