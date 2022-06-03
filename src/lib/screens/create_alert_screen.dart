@@ -180,11 +180,12 @@ class _CreateAlertState extends State<CreateAlert> {
     while (_PsaJson == null) {
       return Scaffold(
         appBar: AppBar(
-          leading: BackButton(),
-          title: Text("Create Alerta"),
+          leading: const BackButton(),
+          title: const Text("Create Alerta"),
           centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),
         ),
-        body: Center(child: Text("loading...")),
+        body: const Center(child: Text("loading...")),
       );
     }
 
@@ -193,66 +194,167 @@ class _CreateAlertState extends State<CreateAlert> {
       print(tValue);
       return Scaffold(
         appBar: AppBar(
-          leading: BackButton(),
-          title: Text("Create Alerta"),
+          leading: const BackButton(),
+          title: const Text("Create Alerta"),
           centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),
         ),
         body: Center(
-            child: Column(
-          children: [
-            Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Column(children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Nome do Alerta',
-                    ),
-                    controller: nomeAlertaController,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Descrição do Alerta',
-                    ),
-                    controller: descricaoAlertaController,
-                  ),
-                  Text("Qual o PSA?"),
-                  DropdownButton(
-                      value: tValue,
-                      items: menuTAlertaItems,
-                      onChanged: (String? _value) => {
-                            setState(() {
-                              tValue = _value;
-                            }),
-                          }),
-                  Text("Qual o PSA?"),
-                  DropdownButton(
-                      value: sValue,
-                      items: menuItems,
-                      onChanged: (String? _value) => {
-                            setState(() {
-                              sValue = _value;
-                            }),
-                          }),
-                  TextButton(
-                      onPressed: () {
-                        createAlerta(
-                            nomeAlertaController.text,
-                            descricaoAlertaController.text,
-                            position.latitude,
-                            position.longitude,
-                            userId,
-                            tValue);
-                        createAlertaPsa(sValue);
+            child: ListView(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(children: [
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Nome do Alerta",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF537597),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        style: const TextStyle(
+                          color: Color(0xFFD3D3D3),
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        controller: nomeAlertaController,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Descrição do Alerta",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF537597),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        style: const TextStyle(
+                          color: Color(0xFFD3D3D3),
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        controller: descricaoAlertaController,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Tipo de Urgência",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF537597),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      DropdownButton(
+                          value: tValue,
+                          items: menuTAlertaItems,
+                          onChanged: (String? _value) => {
+                                setState(() {
+                                  tValue = _value;
+                                }),
+                              }),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Qual o PSA?",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF537597),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      DropdownButton(
+                          value: sValue,
+                          items: menuItems,
+                          onChanged: (String? _value) => {
+                                setState(() {
+                                  sValue = _value;
+                                }),
+                              }),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.fromLTRB(52, 20, 52, 20),
+                            primary: const Color(0xFF77BECE),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12))),
+                        onPressed: () {
+                          createAlerta(
+                              nomeAlertaController.text,
+                              descricaoAlertaController.text,
+                              position.latitude,
+                              position.longitude,
+                              userId,
+                              tValue);
+                          createAlertaPsa(sValue);
 
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const Home()));
-                      },
-                      child: Text("Send PSA"))
-                ])),
-          ],
-        )),
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const Home()));
+                        },
+                        child: const Text(
+                          "Enviar Alerta",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                              fontSize: 20,
+                              color: Color(0xFFFFFFFF)),
+                        ),
+                      )
+                    ])),
+              ],
+            ),
+        ),
       );
     }
 

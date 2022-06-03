@@ -29,17 +29,32 @@ class _CreatePsaNameState extends State<CreatePsaName> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("ASA Alerts"),
-          centerTitle: true,
-          backgroundColor: const Color(0xFF9DD6E2),
-        ),
-        body: Padding(
-            padding: EdgeInsets.all(20),
-            child: Center(
-                child: Form(
-                    child: Column(
+      appBar: AppBar(
+        title: const Text("ASA Alerts"),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF9DD6E2),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Center(
+          child: Form(
+            child: Column(
               children: [
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Nome do PSA",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Quicksand',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF537597),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 TextFormField(
                   controller: nomePSAcontroller,
                   maxLines: 1,
@@ -52,20 +67,39 @@ class _CreatePsaNameState extends State<CreatePsaName> {
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'Nome do Psa',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                 ),
-                TextButton(
-                    onPressed: () {
-                      sendPSA(nomePSAcontroller.text);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => CreatePSA()));
-                    },
-                    child: Text("Register PSA name"))
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(52, 20, 52, 20),
+                      primary: const Color(0xFF77BECE),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12))),
+                  onPressed: () {
+                    sendPSA(nomePSAcontroller.text);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => CreatePSA()));
+                  },
+                  child: const Text(
+                    "Registar Nome",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto',
+                        fontSize: 16,
+                        color: Color(0xFFFFFFFF)),
+                  ),
+                ),
               ],
-            )))));
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
