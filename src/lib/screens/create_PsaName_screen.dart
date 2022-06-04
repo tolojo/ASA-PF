@@ -30,7 +30,7 @@ class _CreatePsaNameState extends State<CreatePsaName> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ASA Alerts"),
+        title: const Text("ASA Psa Name"),
         centerTitle: true,
         backgroundColor: const Color(0xFF9DD6E2),
       ),
