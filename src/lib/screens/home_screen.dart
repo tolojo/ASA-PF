@@ -193,8 +193,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.heart),
-                        color: Color.fromARGB(255, 248, 30, 230),
+                        icon: const FaIcon(FontAwesomeIcons.boxesPacking),
+                        color: Color.fromARGB(255, 110, 68, 4),
                         iconSize: 40,
                         onPressed: () {
                           Navigator.push(

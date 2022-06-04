@@ -46,7 +46,7 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
       for (var i = 0; i < 6; i++) {
         var caracAtivo = _psaJson[i];
         caracs +=
-            "${caracAtivo["tc_nome"]}: ${caracAtivo["caracteristicas_caracteristica"]} \n";
+            "\n ${caracAtivo["tc_nome"]}: ${caracAtivo["caracteristicas_caracteristica"]} \n";
       }
     } catch (err) {
       print(err);
@@ -78,7 +78,7 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
             Column(
               children: [
                 SizedBox(
-                  height: 500,
+                  height: 350,
                   child: FlutterMap(
                     options: MapOptions(
                       center: lat_lng.LatLng(

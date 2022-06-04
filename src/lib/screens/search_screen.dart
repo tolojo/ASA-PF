@@ -86,7 +86,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: ListTile(
                       onTap: (() {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const PSAProfile(),
+                          builder: (context) => PSAProfile(psaId: "${post["psa_id"]}"),
                         ));
                       }),
                       title: Text(

@@ -45,21 +45,33 @@ class _AlertaState extends State<Alerta> {
         backgroundColor: const Color(0xFF9DD6E2),
       ),
       body: ListView.builder(
-          itemCount: _alertsJson.length,
-          itemBuilder: (context, i) {
-            final post = _alertsJson[i];
-            return Card(
-                child: ListTile(
-                    onTap: (() {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            MapScreenAlert(alertaId: "${post["alerta_id"]}"),
-                      ));
-                    }),
-                    title: Text(
-                        "Nome: ${post["alerta_nome"]}\nDescricao: ${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
-                        textAlign: TextAlign.center)));
-          }),
+        itemCount: _alertsJson.length,
+        itemBuilder: (context, i) {
+          final post = _alertsJson[i];
+          return Card(
+            color: const Color.fromARGB(255, 223, 223, 223),
+            elevation: 15,
+            shadowColor: Colors.grey,
+            child: ListTile(
+              onTap: (() {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      MapScreenAlert(alertaId: "${post["alerta_id"]}"),
+                ));
+              }),
+              title: Text(
+                "Nome: ${post["alerta_nome"]}\nDescricao:\n${post["alerta_descricao"]}\n\n\nCARREGE PARA VER MAIS",
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'Quicksand',
+                    color: Color(0xFF537597)),
+              ),
+            ),
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
