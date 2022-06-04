@@ -18,7 +18,6 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchController = TextEditingController();
 
   Future<void> fetchPSA(String nome) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       final response = await http.get(Uri.parse(url + searchController.text));
       final jsonData = jsonDecode(response.body);

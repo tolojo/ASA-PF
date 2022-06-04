@@ -73,57 +73,71 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
           centerTitle: true,
           backgroundColor: const Color(0xFF9DD6E2),
         ),
-        body: Column(
+        body: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: SizedBox(
-                height: 50,
-                child: Text("Nome do PSA: " + nomePsa),
-              ),
-            ),
-            SizedBox(
-              child: Text(caracs),
-            ),
-            SizedBox(
-              height: 300,
-              child: FlutterMap(
-                options: MapOptions(
-                  center: lat_lng.LatLng(
-                      double.parse("${post["alerta_localizacao_lat"]}"),
-                      double.parse("${post["alerta_localizacao_lng"]}")),
-                  zoom: 16.0,
-                ),
-                layers: [
-                  TileLayerOptions(
-                      urlTemplate:
-                          "https://api.mapbox.com/styles/v1/jptr0508/cl26p5a73004o15pfylndcghw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ",
-                      additionalOptions: {
-                        'accessToken':
-                            'pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ',
-                        'id': 'mapbox.mapbox-streets-v8'
-                      }),
-                  MarkerLayerOptions(
-                    markers: [
-                      Marker(
-                        width: 80.0,
-                        height: 80.0,
-                        point: lat_lng.LatLng(
-                            double.parse("${post["alerta_localizacao_lat"]}"),
-                            double.parse("${post["alerta_localizacao_lng"]}")),
-                        builder: (ctx) => Container(
-                          child: IconButton(
-                            icon: Icon(Icons.location_on),
-                            color: Colors.blue,
-                            iconSize: 45.0,
-                            onPressed: () {},
+            Column(
+              children: [
+                SizedBox(
+                  height: 500,
+                  child: FlutterMap(
+                    options: MapOptions(
+                      center: lat_lng.LatLng(
+                          double.parse("${post["alerta_localizacao_lat"]}"),
+                          double.parse("${post["alerta_localizacao_lng"]}")),
+                      zoom: 16.0,
+                    ),
+                    layers: [
+                      TileLayerOptions(
+                          urlTemplate:
+                              "https://api.mapbox.com/styles/v1/jptr0508/cl26p5a73004o15pfylndcghw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ",
+                          additionalOptions: {
+                            'accessToken':
+                                'pk.eyJ1IjoianB0cjA1MDgiLCJhIjoiY2wyNm94d2hnMGNpMDNjcW4zam94bjB0ZSJ9.1sMUG8qNTw27pAq_YKbihQ',
+                            'id': 'mapbox.mapbox-streets-v8'
+                          }),
+                      MarkerLayerOptions(
+                        markers: [
+                          Marker(
+                            width: 80.0,
+                            height: 80.0,
+                            point: lat_lng.LatLng(
+                                double.parse(
+                                    "${post["alerta_localizacao_lat"]}"),
+                                double.parse(
+                                    "${post["alerta_localizacao_lng"]}")),
+                            builder: (ctx) => Container(
+                              child: IconButton(
+                                icon: const Icon(Icons.location_on),
+                                color: Colors.blue,
+                                iconSize: 45.0,
+                                onPressed: () {},
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: 400,
+                  child: Card(
+                    color: const Color.fromARGB(255, 223, 223, 223),
+                    child: Text(
+                      "Nome: " + nomePsa + "\n" + caracs,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF537597),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

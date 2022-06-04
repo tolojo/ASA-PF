@@ -11,45 +11,40 @@ class PSAProfile extends StatefulWidget {
 }
 
 class _PSAProfileState extends State<PSAProfile> {
-  final url = "http://10.0.2.2:3000/cidadao/";
-  var _cidadaoJson;
-  final bool _isLoading = false;
+  final url = "http://10.0.2.2:3000/psa/id/";
+  var _psaJson;
 
-  Future<void> fetchPSACarac() async {
+  Future<void> fetchPSA() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getString('id');
-    print(userId);
+    final psaId = prefs.getString('id');
+    print(psaId);
     try {
-      final response = await http.get(Uri.parse(url + userId!));
+      final response = await http.get(Uri.parse(url + psaId!));
       final jsonData = jsonDecode(response.body);
       setState(() {
-        _cidadaoJson = jsonData;
+        _psaJson = jsonData;
       });
-      _cidadaoJson = jsonData;
+      _psaJson = jsonData;
     } catch (err) {}
   }
 
   @override
   void initState() {
     super.initState();
-    fetchPSACarac();
+    fetchPSA();
   }
 
   @override
   Widget build(BuildContext context) {
-    final post = _cidadaoJson;
+    final post = _psaJson;
     if (post != null) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text("ASA Profile"),
+          title: const Text("ASA PSA Profile"),
           centerTitle: true,
           backgroundColor: const Color(0xFF9DD6E2),
         ),
-        body: _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView(
+        body: ListView(
                 children: <Widget>[
                   Container(
                     color: const Color(0xFFCEE9F3),
@@ -75,7 +70,7 @@ class _PSAProfileState extends State<PSAProfile> {
                           height: 10,
                         ),
                         Text(
-                          "${post["cidadao_nome"]}",
+                          "${post["psa_nome_provisorio"]}",
                           style: const TextStyle(
                             fontSize: 24,
                             fontFamily: 'Quicksand',
