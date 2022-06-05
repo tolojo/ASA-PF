@@ -339,7 +339,7 @@ class _CreateAlertState extends State<CreateAlert> {
                             position.longitude,
                             userId,
                             tValue);
-                        sleep(Duration(seconds: 5));
+                        sleep(Duration(seconds: 9));
                         createAlertaPsa(sValue);
 
                         Navigator.push(context,
