@@ -113,7 +113,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     fetchPSA(searchController.text);
-                    if (formkey.currentState!.validate()) {}
                   },
                   style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.fromLTRB(150, 20, 150, 20),

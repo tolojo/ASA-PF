@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -110,10 +111,11 @@ class _CreateAlertState extends State<CreateAlert> {
   }
 
   Future<Response> createAlertaPsa(psaId) {
+    print(psaId);
     Map psa = {"caracteristicas_alerta_psa_id": psaId};
 
     return post(
-      Uri.parse("http://10.0.2.2:3000/alerta/saveAlertaPsa"),
+      Uri.parse("https://asa-pf.herokuapp.com/alerta/saveAlertaPsa"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -337,6 +339,7 @@ class _CreateAlertState extends State<CreateAlert> {
                             position.longitude,
                             userId,
                             tValue);
+                        sleep(Duration(seconds: 5));
                         createAlertaPsa(sValue);
 
                         Navigator.push(context,

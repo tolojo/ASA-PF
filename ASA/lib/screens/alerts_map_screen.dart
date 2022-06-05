@@ -42,6 +42,7 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
         _psaJson = jsonData;
       });
       var psaAtivo = _psaJson[1];
+      print(psaAtivo);
       nomePsa = "${psaAtivo["psa_nome_provisorio"]}";
       for (var i = 0; i < 6; i++) {
         var caracAtivo = _psaJson[i];
@@ -65,7 +66,7 @@ class _MapScreenAlertState extends State<MapScreenAlert> {
     final post = _alertaJson;
     final postP = _psaJson;
     // print(postP);
-    if (postP != null) {
+    if (postP != null && post != null) {
       return Scaffold(
         appBar: AppBar(
           leading: const BackButton(),
