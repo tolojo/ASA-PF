@@ -14,7 +14,7 @@ class Alerta extends StatefulWidget {
 }
 
 class _AlertaState extends State<Alerta> {
-  final url = "http://10.0.2.2:3000/alerta";
+  final url = "https://asa-pf.herokuapp.com/alerta";
   var _alertsJson = [];
 
   void fetchAlertas() async {

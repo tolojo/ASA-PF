@@ -16,7 +16,7 @@ Future<Response> sendPSA(String namePsa) {
   var map = {"name": namePsa};
 
   return post(
-    Uri.parse("http://10.0.2.2:3000/psa/savePsaName"),
+    Uri.parse("https://asa-pf.herokuapp.com/psa/savePsaName"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

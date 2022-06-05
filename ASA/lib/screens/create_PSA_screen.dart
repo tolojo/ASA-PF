@@ -12,7 +12,7 @@ class CreatePSA extends StatefulWidget {
 }
 
 class _CreatePSAState extends State<CreatePSA> {
-  final url = "http://10.0.2.2:3000/psa/getCarac";
+  final url = "https://asa-pf.herokuapp.com/psa/getCarac";
   var _caracJson = null;
 
   void fetchCarac() async {
@@ -30,7 +30,7 @@ class _CreatePSAState extends State<CreatePSA> {
 
   Future<Response> sendPSA(List form) {
     return post(
-      Uri.parse("http://10.0.2.2:3000/psa/savePsa"),
+      Uri.parse("https://asa-pf.herokuapp.com/psa/savePsa"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

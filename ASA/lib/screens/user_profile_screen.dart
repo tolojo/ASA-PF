@@ -11,7 +11,7 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  final url = "http://10.0.2.2:3000/cidadao/";
+  final url = "https://asa-pf.herokuapp.com/cidadao/";
   var _cidadaoJson;
   final bool _isLoading = false;
 
@@ -136,11 +136,11 @@ class _UserProfileState extends State<UserProfile> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButton(),
-          title: const Text("Create PSA profile"),
+          title: const Text("ASA Profile"),
           centerTitle: true,
+          backgroundColor: const Color(0xFF9DD6E2),
         ),
-        body: const Center(child: Text("loading")),
+        body: const Center(child: Text("loading...")),
       );
     }
   }

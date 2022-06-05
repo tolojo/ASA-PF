@@ -13,7 +13,7 @@ class PSAProfile extends StatefulWidget {
 class _PSAProfileState extends State<PSAProfile> {
   String psaId;
   _PSAProfileState(this.psaId);
-  final url = "http://10.0.2.2:3000/psa/id/";
+  final url = "https://asa-pf.herokuapp.com/psa/id/";
   var _psaJson = [];
   String caracs = "";
   String nomePsa = "";

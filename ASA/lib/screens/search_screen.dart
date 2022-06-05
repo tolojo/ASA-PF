@@ -13,7 +13,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final formkey = GlobalKey<FormState>();
-  final url = "http://10.0.2.2:3000/psa/nome/";
+  final url = "https://asa-pf.herokuapp.com/psa/nome/";
   var _psaJson = null;
   TextEditingController searchController = TextEditingController();
 
@@ -86,7 +86,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: ListTile(
                       onTap: (() {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => PSAProfile(psaId: "${post["psa_id"]}"),
+                          builder: (context) =>
+                              PSAProfile(psaId: "${post["psa_id"]}"),
                         ));
                       }),
                       title: Text(
